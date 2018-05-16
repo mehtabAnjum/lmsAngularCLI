@@ -1,0 +1,77 @@
+<br>
+
+<div class="container">
+  <div class="row">
+    <div id="custom-search-input">
+      <div class="input-group col-md-12">
+        <input type="text" class="  search-query form-control" placeholder="Search" #search/>
+        <span class="input-group-btn">
+          <button class="btn btn-danger" type="button" (click)="searchStudentById(search.value)">
+            <span class=" glyphicon glyphicon-search"></span>
+          </button>
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
+<br>
+<br>
+
+<div class="container">
+  <div class="card">
+    <div class="card-header">
+      Student List
+    </div>
+    <br>
+    <div class="card-body">
+      <table class="table table-hover">
+        <thead>
+        <th>S.no</th>
+        <th>Student Id</th>
+        <th>Name</th>
+        </thead>
+        <tbody>
+        <tr *ngFor="let s of studentList; let y = index">
+          <td>{{y+1}}</td>
+          <td>{{s.id}}</td>
+          <td>{{s.name}}</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+<br>
+<div class="container">
+  <div class="card ">
+    <div class="card-header">
+      ADD Student
+    </div>
+    <div class="card-body">
+
+      <div class="form-group">
+        <label for="name">Student Name</label>
+        <input type="text" id="name" class="form-control" required #inp>
+      </div>
+
+      <select class="custom-select" (change)="getBatches(courseId.value)" #courseId>
+        <option selected> Select Course</option>
+        <option
+           *ngFor="let c of courseList" [value]="c.id">{{c.name}}
+        </option>
+      </select>
+
+      <select class="custom-select" #batchId>
+        <option selected> Select Batch</option>
+        <option
+           *ngFor="let b of batchList" [value]="b.id">{{b.name}}
+        </option>
+      </select>
+
+      <br>
+      <div class="form-check">
+        <button class="btn btn-primary" (click)="addStudent(inp.value,courseId.value,batchId.value)">Submit</button>
+      </div>
+    </div>
+  </div>
+</div>

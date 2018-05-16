@@ -1,0 +1,147 @@
+<div *ngIf="coursepage">
+  <br>
+  <div class="container">
+    <div class="card">
+      <div class="card-header">
+        Course List
+      </div>
+      <div class="card-body">
+        <table class="table table-hover">
+          <thead>
+          <th>S.no</th>
+          <th>Course Id</th>
+          <th>Course Name</th>
+          <th></th>
+          </thead>
+          <tbody>
+          <tr *ngFor="let c of courseList; let y = index">
+            <td>{{y+1}}</td>
+            <td>{{c.id}}</td>
+            <td>{{c.name}}</td>
+            <td><a class="btn btn-dark" (click)="getBatches(c.id,c.name)">Batches</a></td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <br>
+  <div class="container">
+    <div class="card ">
+      <div class="card-header">
+        Course Offered
+      </div>
+      <div class="card-body">
+
+
+        <div class="form-group">
+          <label for="courseName">Course Name</label>
+          <input type="text" id="courseName" class="form-control" required #courseName>
+        </div>
+
+        <div class="form-group">
+          <button class="btn btn-primary" (click)="addCourse(courseName.value)">Submit</button>
+        </div>
+
+      </div>
+    </div>
+    <br>
+  </div>
+</div>
+
+
+<div *ngIf="batchpage">
+  <div class="container">
+    <h2>Course Name:{{courseName}}</h2>
+    <br>
+    <div class="card">
+      <div class="card-header">
+        Batch List
+      </div>
+      <br>
+      <div class="card-body">
+        <table class="table table-hover">
+          <thead>
+          <th>S.no</th>
+          <th>Batch Id</th>
+          <th>Batch Name</th>
+          </thead>
+          <tbody>
+          <tr *ngFor="let b of batchList; let y = index">
+            <td>{{y+1}}</td>
+            <td>{{b.id}}</td>
+            <td>{{b.name}}</td>
+            <td><a class="btn btn-dark" (click)="getBatchStudents(b.id,b.name)">Students</a></td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <br>
+  <div class="container">
+    <div class="card ">
+      <div class="card-header">
+        Add Batches
+      </div>
+      <div class="card-body">
+        <div class="form-group">
+          <label for="batchName">Batch Name</label>
+          <input type="text" id="batchName" class="form-control" required #batchName>
+        </div>
+        <div class="form-group">
+          <button class="btn btn-primary" (click)="addBatch(batchName.value)">Submit</button>
+        </div>
+      </div>
+    </div>
+    <br>
+  </div>
+</div>
+
+
+<div *ngIf="studentpage">
+  <div class="container">
+    <h2>Course Name:{{batchName}}</h2>
+    <br>
+    <div class="card">
+      <div class="card-header">
+        Student List
+      </div>
+      <br>
+      <div class="card-body">
+        <table class="table table-hover">
+          <thead>
+          <th>S.no</th>
+          <th>Student Id</th>
+          <th>Student Name</th>
+          </thead>
+          <tbody>
+          <tr *ngFor="let b of studentList; let y = index">
+            <td>{{y+1}}</td>
+            <td>{{b.id}}</td>
+            <td>{{b.name}}</td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <br>
+  <div class="container">
+    <div class="card ">
+      <div class="card-header">
+        Add Student
+      </div>
+      <div class="card-body">
+        <div class="form-group">
+          <label for="studentName">Student Name</label>
+          <input type="text" id="studentName" class="form-control" required #studentName>
+        </div>
+        <div class="form-group">
+          <button class="btn btn-primary" (click)="addStudentToBatch(studentName.value)">Submit</button>
+        </div>
+      </div>
+    </div>
+    <br>
+  </div>
+</div>
